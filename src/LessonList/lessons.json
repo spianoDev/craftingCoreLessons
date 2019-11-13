@@ -1,0 +1,76 @@
+[
+  {
+    "type": "Lesson",
+    "id": "1",
+    "attributes": {
+      "name": "My Lesson",
+      "grade": "5",
+      "topic": "something",
+      "materials": "yes",
+      "vocab": "all the words",
+      "description": "yes",
+      "activities": "many",
+      "accommodations": "not at this time"
+    },
+    "relationships": {
+      "standard_title": {
+        "data": [
+          {
+            "type": "Standard",
+            "id": "28"
+          },
+          {
+            "type": "Standard",
+            "id": "32"
+          },
+          {
+            "type": "Standard",
+            "id": "46"
+          }
+        ],
+        "meta": {
+          "count": 3
+        }
+      }
+    }
+  },
+  {
+    "type": "Lesson",
+    "id": "2",
+    "attributes": {
+      "name": "Another Lesson",
+      "grade": "4",
+      "topic": "something",
+      "materials": "yes",
+      "vocab": "yes",
+      "description": "yes",
+      "activities": "all of them",
+      "accommodations": "nope"
+    },
+    "relationships": {
+      "standard_title": {
+        "data": [
+          {
+            "type": "Standard",
+            "id": "7"
+          },
+          {
+            "type": "Standard",
+            "id": "20"
+          },
+          {
+            "type": "Standard",
+            "id": "40"
+          },
+          {
+            "type": "Standard",
+            "id": "41"
+          }
+        ],
+        "meta": {
+          "count": 4
+        }
+      }
+    }
+  }
+]
