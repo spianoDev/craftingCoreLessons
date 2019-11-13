@@ -12,14 +12,14 @@ export default class App extends Component {
                 <header className="App-header">
                     <nav>
                         <Link to="/"> Lesson List </Link>
-
+                      <Link to="/lesson/:id"> Individual Lesson </Link>
                         <Link to="/lesson/new"> New Lesson Plan </Link>
                     </nav>
                 </header>
                 <main>
                     <Switch>
-                        {/*<Route path="" exact={true} component={LessonList}/>*/}
-                        <Route path="/lesson/:name" exact={true} component={OneLesson}/>
+                        <Route path="/" exact={true} component={LessonList}/>
+                        <Route path="/lesson/:id" exact={true} render={routerProps => <OneLesson match={routerProps.match}/>}/>
                     </Switch>
                 </main>
             </div>

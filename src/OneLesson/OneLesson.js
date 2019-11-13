@@ -5,11 +5,10 @@ export default class OneLesson extends Component {
     render() {
         let item = standardList.map(standardName => {
             return (
-                <div key={item.standard_title}>
-                    <h2>Grade: {item.grade}</h2>
-                    <h2>{item.heading}, {item.anchor_standard_number}</h2>
-                    <h3>{item.anchor_standard_text}</h3>
-                    <h4>{item.standard_title}: {item.standard_text}</h4>
+                <div key={standardName.attributes.standard_title}>
+                    <h2>Grade: {standardName.attributes.grade} - {standardName.attributes.heading}, {standardName.attributes.anchor_standard_number}</h2>
+                    <h3>{standardName.attributes.anchor_standard_text}</h3>
+                    <h4>{standardName.attributes.standard_title}: {standardName.attributes.standard_text}</h4>
                 </div>
             );
         });
