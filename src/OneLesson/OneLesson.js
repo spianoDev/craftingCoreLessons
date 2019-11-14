@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import standardList from './standards.json';
+import allLessons from '../LessonList/lessons.json';
 
 export default class OneLesson extends Component {
     render() {
-        let item = standardList.map(standardName => {
+        let chosenLesson = allLessons.find(lesson => lesson.id === this.props.match.params.id);
             return (
-                <div key={standardName.attributes.standard_title}>
-                    <h2>Grade: {standardName.attributes.grade} - {standardName.attributes.heading}, {standardName.attributes.anchor_standard_number}</h2>
-                    <h3>{standardName.attributes.anchor_standard_text}</h3>
-                    <h4>{standardName.attributes.standard_title}: {standardName.attributes.standard_text}</h4>
+                <div key={chosenLesson.attributes.name}>
+                    <h2>Lesson: {chosenLesson.attributes.name}, Grade {chosenLesson.attributes.grade} - {chosenLesson.attributes.topic}</h2>
+                    {/*<h3>Standards: {chosenLesson.relationships.standard_title.data[0]}</h3>*/}
+                    <h4>Important Vocabulary: {chosenLesson.attributes.vocab}</h4>
+                    <p>Description: {chosenLesson.attributes.description}</p>
+                    <p>Activities: {chosenLesson.attributes.activities}</p>
+                    <p>Accommodations: {chosenLesson.attributes.accommodations}</p>
                 </div>
-            );
-        });
-        return <div>
-            <h1>Browse the Illinois CCSS for Music</h1>
-            {item}
-        </div>
+            )
     }
 }
