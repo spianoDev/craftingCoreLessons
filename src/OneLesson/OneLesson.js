@@ -72,15 +72,15 @@ export default class OneLesson extends Component {
         }
         let lessonInfo = [];
         if (this.state.lesson.attributes) {
-            let lesson = this.state.lesson.attributes;
-            lessonInfo.push(<div key={lessonInfo}>
-                <h4>{lesson.name}
-                </h4>
-                {/*<p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>*/}
-
-            </div>)
+            lessonInfo = this.state.lesson.attributes;
+            // lessonInfo.push(<div key={lessonInfo}>
+            //     <h4>{lesson.name}
+            //     </h4>
+            //     {/*<p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>*/}
+            //
+            // </div>)
         }
-        console.log(this.state.lesson.attributes);
+        // console.log(this.state.lesson.attributes);
         console.log(lessonInfo);
         console.log(dataInfo);
             return (
