@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import allLessons from '../LessonList/lessons.json';
-import standardList from '../StandardList/standards.json';
 import axios from 'axios';
 
 export default class OneLesson extends Component {
@@ -73,12 +71,7 @@ export default class OneLesson extends Component {
         let lessonInfo = [];
         if (this.state.lesson.attributes) {
             lessonInfo = this.state.lesson.attributes;
-            // lessonInfo.push(<div key={lessonInfo}>
-            //     <h4>{lesson.name}
-            //     </h4>
-            //     {/*<p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>*/}
-            //
-            // </div>)
+
         }
         // console.log(this.state.lesson.attributes);
         console.log(lessonInfo);

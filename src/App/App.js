@@ -7,6 +7,7 @@ import StandardList from "../StandardList/StandardList";
 import LoginForm from "../Forms/LoginForm";
 import SignupForm from "../Forms/SignupForm";
 import Nav from '../Nav/Nav';
+import NewLesson from "../NewLesson/NewLesson";
 
 export default class App extends Component {
     constructor(props) {
@@ -125,6 +126,7 @@ export default class App extends Component {
                             : 'Please Log In' }
                     </h3>
                     <Switch>
+                        <Route path="/lesson/new" exact={true} component={NewLesson} />
                         <Route path="/lessons" exact={true} component={LessonList}/>
                         <Route path="/standards" exact={true} component={StandardList}/>
                         <Route path="/lesson/:id" exact={true} render={routerProps => <OneLesson match={routerProps.match}/>}/>
