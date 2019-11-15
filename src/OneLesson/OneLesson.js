@@ -1,53 +1,97 @@
 import React, { Component } from 'react';
 import allLessons from '../LessonList/lessons.json';
 import standardList from '../StandardList/standards.json';
+import axios from 'axios';
 
 export default class OneLesson extends Component {
+    constructor() {
+        super();
+        this.state = {
+            lesson: [],
+            lessonStandards: [],
+            musicStandards: [],
+        };
+        this.setLessonStandards = this.setLessonStandards.bind(this);
+    }
+
+    componentDidMount() {
+        // backend call to access the individual lesson data model
+        axios.get(`http://localhost:8000/lesson/${this.props.match.params.id}`)
+            .then(res => {
+                // console.log(res.data.data);
+                // console.log(res.data.data.relationships.standard_title.data);
+                this.setState(
+                    {
+                        lesson: res.data.data,
+                        lessonStandards: res.data.data.relationships.standard_title.data
+                    })
+            })
+            .then(() => {
+                // second backend call to access the music standards data model
+                axios.get(`http://localhost:8000/standards/`)
+                    .then(res => {
+                        // console.log(res.data.data);
+                        this.setState({ musicStandards: res.data.data })
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    setLessonStandards(standards) {
+        this.setState( {
+            musicStandards: standards
+        })
+        // console.log(evt.target.value)
+
+    }
     render() {
-
-        let chosenLesson = allLessons.find(lesson => lesson.id === this.props.match.params.id);
-        // console.log(chosenLesson.relationships.standard_title.data[0]);
+        // console.log(this.state);
+        //  let chosenLesson = allLessons.find(lesson => lesson.id === this.props.match.params.id);
+        // // console.log(chosenLesson.relationships.standard_title.data[0]);
         let standards = [];
-        let standardData = [];
-        for(let i = 0; i < chosenLesson.relationships.standard_title.data.length; i++) {
-                  standards.push(chosenLesson.relationships.standard_title.data[i].id);
-            let standardId = standardList.filter(standard => standard.id === standards[i]);
-                standardData.push(standardId[0].attributes);
-            // console.log(standardId[0].attributes);
-                // standards.push([standardId[0].attributes]);
-            // console.log(standardId.attributes.heading);
+        if (this.state.lessonStandards.length && this.state.musicStandards.length) {
+            for (let i = 0; i < this.state.lessonStandards.length; i++) {
+                let standardId = this.state.musicStandards.filter(standard => standard.id === this.state.lessonStandards[i].id);
+                // console.log(standardId);
+                console.log(standardId[0]);
+                standards.push(standardId[0]);
             }
+        }
 
-            // for (let data of standardData) {
-            //     console.log(data);
-            //     // return data;
-            // }
-            // let newInfo = {};
-      // standardData.forEach(function(element) {
-      //       console.log(element.anchor_standard_text);
-      //   });
         let dataInfo = [];
-        for(let i = 0; i < standardData.length; i++) {
-            dataInfo.push(<div>
-                <h4>{standardData[i].heading} {standardData[i].anchor_standard_number}: {standardData[i].anchor_standard_text}</h4>
-                <p>{standardData[i].standard_title}: {standardData[i].standard_text}</p>
+        if (standards.length > 0) {
+            for (let i = 0; i < standards.length; i++) {
+                dataInfo.push(<div key={dataInfo}>
+                    <h4>{standards[i].attributes.heading} {standards[i].attributes.anchor_standard_number}: {standards[i].attributes.anchor_standard_text}
+                    </h4>
+                    <p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>
+
+                </div>)
+            }
+        }
+        let lessonInfo = [];
+        if (this.state.lesson.attributes) {
+            let lesson = this.state.lesson.attributes;
+            lessonInfo.push(<div key={lessonInfo}>
+                <h4>{lesson.name}
+                </h4>
+                {/*<p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>*/}
 
             </div>)
         }
-
-            console.log(standardData);
-            console.log(standards);
-            console.log(dataInfo);
+        console.log(this.state.lesson.attributes);
+        console.log(lessonInfo);
+        console.log(dataInfo);
             return (
-                <div key={chosenLesson.attributes.name}>
-
-                    <h2>Lesson: {chosenLesson.attributes.name}, Grade {chosenLesson.attributes.grade} - {chosenLesson.attributes.topic}</h2>
-                    <h3>Standards:</h3>
+                <div key={this.state.lesson}>
+                    <h2>Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
+                    <h3>Standards</h3>
                     {dataInfo}
-                    <h4>Important Vocabulary: {chosenLesson.attributes.vocab}</h4>
-                    <p>Description: {chosenLesson.attributes.description}</p>
-                    <p>Activities: {chosenLesson.attributes.activities}</p>
-                    <p>Accommodations: {chosenLesson.attributes.accommodations}</p>
+                    <h4>Important Vocabulary: {lessonInfo.vocab}</h4>
+                    <p>Description: {lessonInfo.description}</p>
+                    <p>Activities: {lessonInfo.activities}</p>
+                    <p>Accommodations: {lessonInfo.accommodations}</p>
 
                 </div>
             )
