@@ -22,17 +22,20 @@ export default class App extends Component {
         this.display_form = this.display_form.bind(this);
     }
 
+
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch('http://localhost:8000/crafting_core_lessons/current_user/', {
+            fetch('http://localhost:8000/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
             })
                 .then(res => res.json())
                 .then(json => {
-                    this.setState({ username: json.username });
+                    console.log(json);
+                    this.setState({ username: json.data.user.username });
                 });
+
         }
     }
 

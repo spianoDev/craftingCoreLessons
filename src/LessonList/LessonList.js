@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import allLessons from './lessons.json';
+// import allLessons from './lessons.json';
+import axios from 'axios';
 
 export default class LessonList extends Component {
+    constructor() {
+        super();
+        this.state = {
+            listOfLessons: []
+        };
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:8000/lessons/')
+            .then(res => {
+                console.log(res.data);
+                this.setState({ listOfLessons: res.data.data });
+                //might be res.data.data
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     render() {
-        let lesson = allLessons.map(lessonName => {
+        let lesson = this.state.listOfLessons.map(lessonName => {
             return (
                 <div key={lessonName.attributes.name}>
                     <ul>
-                    <Link to={`/lesson/${lessonName.id}`}>{lessonName.attributes.name}</Link>
+                    <Link to={`/lesson/${lessonName.id}`}>{lessonName.attributes.name}:</Link>
+                        <li>A lesson on {lessonName.attributes.topic} for {lessonName.attributes.grade} grade.</li>
                     </ul>
                 </div>
             );
