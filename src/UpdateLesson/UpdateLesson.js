@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 
 export default class UpdateLesson extends Component {
     constructor() {
@@ -20,6 +21,8 @@ export default class UpdateLesson extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addCheckbox = this.addCheckbox.bind(this);
+        // this.setRedirectToLessons = this.setRedirectToLessons.bind(this);
+        // this.renderRedirectToLessons = this.renderRedirectToLessons.bind(this);
     }
 
     componentDidMount() {
@@ -50,18 +53,35 @@ export default class UpdateLesson extends Component {
                 console.log(error);
             });
     }
-
+    // setRedirectToLessons() {
+    //     this.setState({ redirect: true });
+    // }
+    //
+    // renderRedirectToLessons() {
+    //     if (this.state.redirect) {
+    //         return <Redirect to="lessons" />;
+    //     }
+    // }
     addCheckbox(evt) {
         evt.preventDefault();
         let boxValue = evt.target.value;
         let value = evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value;
+        let standardArray = [];
+        // console.log("Hello World", checkedBox);
+        for (let i = 0; i < this.state.standard_title.length; i++) {
+            if (this.state.standard_title[i]) {
+                standardArray.push(this.state.standard_title[i]);
+            }
+        }
+
         if (value) {
             this.setState({
-                standard_title: [...this.state.standard_title.data, {type: "Standard", id: boxValue}]
-            });
+                standard_title: [...standardArray, boxValue]
+            }, () => {
 
+            }
+            );
         }
-        console.log(boxValue);
     }
 
     handleSubmit(evt) {
@@ -95,6 +115,7 @@ export default class UpdateLesson extends Component {
                 }
             }
         };
+        console.log(updatedLesson);
         axios.put(`http://localhost:8000/lesson/update/${this.props.match.params.id}`,
 
             updatedLesson, {
@@ -104,7 +125,7 @@ export default class UpdateLesson extends Component {
                 body: JSON.stringify({data: updatedLesson})
             })
             .then(res => {
-                console.log(res);
+                // this.setRedirectToLessons();
             })
             .catch(err => {
                 console.log(err);
@@ -139,7 +160,7 @@ export default class UpdateLesson extends Component {
         });
         return (
             <div>
-                {/*{this.renderRedirect()}*/}
+                {/*{this.renderRedirectToLessons()}*/}
                 <form>
                     <label htmlFor='name'>Lesson Name </label>
                     <input onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"

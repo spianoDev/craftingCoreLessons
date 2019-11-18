@@ -11,6 +11,9 @@ export default class OneLesson extends Component {
             musicStandards: [],
         };
         this.setLessonStandards = this.setLessonStandards.bind(this);
+        this.deleteLesson = this.deleteLesson.bind(this);
+        // this.setRedirect = this.setRedirect.bind(this);
+        // this.renderRedirect = this.renderRedirect.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +47,24 @@ export default class OneLesson extends Component {
         // console.log(evt.target.value)
 
     }
+    deleteLesson() {
+        axios.delete(`http://localhost:8000/lesson/delete/${this.props.match.params.id}`)
+            .then(res => {
+                // this.setRedirect();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    // setRedirect() {
+    //     this.setState({ redirect: true });
+    // }
+    //
+    // renderRedirect() {
+    //     if (this.state.redirect) {
+    //         return <Redirect to="http://localhost:3000/lessons" />;
+    //     }
+    // }
     render() {
         // console.log(this.state);
         //  let chosenLesson = allLessons.find(lesson => lesson.id === this.props.match.params.id);
@@ -79,6 +100,7 @@ export default class OneLesson extends Component {
         console.log(dataInfo);
             return (
                 <div key={this.state.lesson}>
+                    {/*{this.renderRedirect()}*/}
                     <h2>Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
                     <h3>Standards</h3>
                     {dataInfo}
@@ -87,7 +109,10 @@ export default class OneLesson extends Component {
                     <p>Activities: {lessonInfo.activities}</p>
                     <p>Accommodations: {lessonInfo.accommodations}</p>
                     <Link to={`/lesson/update/${this.props.match.params.id}`}>
-                        <button className="updatecat">Update this Category </button>
+                        <button >Update this Lesson </button>
+                    </Link>
+                    <Link to={`/lesson/delete/${this.props.match.params.id}`}>
+                        <button >Delete this Lesson </button>
                     </Link>
                 </div>
             )
