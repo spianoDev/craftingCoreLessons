@@ -26,7 +26,7 @@ export default class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch('http://localhost:8000/current_user/', {
+            fetch('http://localhost:8000/core/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
@@ -36,7 +36,6 @@ export default class App extends Component {
                     console.log(json);
                     this.setState({ username: json.data.user.username });
                 });
-
         }
     }
 
@@ -45,13 +44,14 @@ export default class App extends Component {
         fetch('http://localhost:8000/token-auth/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/vnd.api+json'
             },
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            // .then(res => console.log(res))
+             .then(res => console.log(res))
             .then(json => {
+                console.log(json.token);
                 localStorage.setItem('token', json.token);
                 this.setState({
                     logged_in: true,
@@ -64,16 +64,16 @@ export default class App extends Component {
 
     handle_signup(evt, data) {
         evt.preventDefault();
-        fetch('http://localhost:8000/crafting_core_lessons/users/', {
+        fetch('http://localhost:8000/core/users/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/vnd.api+json'
             },
             body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(json => {
-                localStorage.setItem('token', json.token);
+                localStorage.setItem('token', json.data.token);
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
@@ -106,9 +106,9 @@ export default class App extends Component {
             }
 
         return (
-            <div className="App">
+            <div >
 
-                <header className="App-header">
+                <header >
                     <nav>
                         <Link to="/lessons"> Lesson List </Link>
                       <Link to="/standards"> All Standards </Link>
@@ -117,6 +117,7 @@ export default class App extends Component {
 
                 </header>
                 <main>
+                    <div className="content">
                     <Nav logged_in={this.state.logged_in}
                          display_form={this.display_form}
                          handle_logout={this.handle_logout}/>
@@ -131,7 +132,7 @@ export default class App extends Component {
                         <Route path="/standards" exact={true} component={StandardList}/>
                         <Route path="/lesson/:id" exact={true} render={routerProps => <OneLesson match={routerProps.match}/>}/>
                     </Switch>
-
+                    </div>
                 </main>
             </div>
         );

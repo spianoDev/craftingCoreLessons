@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link, Redirect } from "react-router-dom";
 
 export default class OneLesson extends Component {
     constructor() {
@@ -85,7 +86,9 @@ export default class OneLesson extends Component {
                     <p>Description: {lessonInfo.description}</p>
                     <p>Activities: {lessonInfo.activities}</p>
                     <p>Accommodations: {lessonInfo.accommodations}</p>
-
+                    <Link to={`/localhost:8000/lesson/${this.props.match.params.pk}`}>
+                        <button className="updatecat">Update this Category </button>
+                    </Link>
                 </div>
             )
     }

@@ -1,11 +1,67 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Slabo+27px&display=swap');
+body {
+  background-image: url("/public/images/standards-background.jpg");
+  display: block;
+  max-width: 1050px;
+}
+
+.heading {
+  color: #8e4742;
+
+}
+.content {
+  background-color: #e5e0d7;
+  max-width: 752px;
   text-align: center;
+  margin: 75px auto 20px;
+  padding: 10px 20px;
 }
+header {
+  width: auto;
+  position: fixed;
+  margin: -100px auto;
 
-
-.App-link {
-  color: #09d3ac;
 }
-.nav {
+main {
+  display: block;
+  text-align: center;
+  font-family: 'Slabo 27px', serif;
+
+}
+nav {
+  display: inline-block;
+  align-content: space-between;
+  text-align: center;
+  background-color: #e5e0d7;
+  max-width: 80%;
   height: 50px;
+  padding: 20px 25px 5px;
+  margin: 30px 130px 5px;
+}
+nav a {
+  text-decoration: none;
+  color: #8e4742;
+  font-family: 'Bebas Neue', cursive;
+  align-content: space-between;
+  margin: 0 30px;
+  font-size: 18px;
+}
+nav a:hover {
+  color: darkred;
+}
+.individual-lesson {
+  text-decoration: none;
+  color: #8e4742;
+  font-family: 'Bebas Neue', cursive;
+}
+.individual-lesson:hover {
+  color: darkred;
+}
+h4, h3 {
+  font-family: 'Bebas Neue', cursive;
+  color: rgba(0, 0, 0, 0.76);
+}
+.title {
+  font-family: 'Slabo 27px', serif;
+  color: darkred;
 }

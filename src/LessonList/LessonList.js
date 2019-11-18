@@ -29,7 +29,7 @@ export default class LessonList extends Component {
                 <div key={lessonName.attributes.name}>
                     <ul>
                     <Link to={`/lesson/${lessonName.id}`}>{lessonName.attributes.name}:</Link>
-                        <li>A lesson on {lessonName.attributes.topic} for {lessonName.attributes.grade} grade.</li>
+                        <li>A lesson on {lessonName.attributes.topic} for grade {lessonName.attributes.grade}.</li>
                     </ul>
                 </div>
             );
