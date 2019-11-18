@@ -8,6 +8,7 @@ import LoginForm from "../Forms/LoginForm";
 import SignupForm from "../Forms/SignupForm";
 import Nav from '../Nav/Nav';
 import NewLesson from "../NewLesson/NewLesson";
+import UpdateLesson from "../UpdateLesson/UpdateLesson";
 
 export default class App extends Component {
     constructor(props) {
@@ -128,6 +129,7 @@ export default class App extends Component {
                     </h3>
                     <Switch>
                         <Route path="/lesson/new" exact={true} component={NewLesson} />
+                        <Route path="/lesson/update/:id" exact={true} render={routerProps => <UpdateLesson match={routerProps.match} /> } />
                         <Route path="/lessons" exact={true} component={LessonList}/>
                         <Route path="/standards" exact={true} component={StandardList}/>
                         <Route path="/lesson/:id" exact={true} render={routerProps => <OneLesson match={routerProps.match}/>}/>

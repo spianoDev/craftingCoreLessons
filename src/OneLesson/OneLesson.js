@@ -18,7 +18,7 @@ export default class OneLesson extends Component {
         axios.get(`http://localhost:8000/lesson/${this.props.match.params.id}`)
             .then(res => {
                 // console.log(res.data.data);
-                // console.log(res.data.data.relationships.standard_title.data);
+                console.log(res.data.data.relationships.standard_title.data);
                 this.setState(
                     {
                         lesson: res.data.data,
@@ -86,7 +86,7 @@ export default class OneLesson extends Component {
                     <p>Description: {lessonInfo.description}</p>
                     <p>Activities: {lessonInfo.activities}</p>
                     <p>Accommodations: {lessonInfo.accommodations}</p>
-                    <Link to={`/localhost:8000/lesson/${this.props.match.params.pk}`}>
+                    <Link to={`/lesson/update/${this.props.match.params.id}`}>
                         <button className="updatecat">Update this Category </button>
                     </Link>
                 </div>

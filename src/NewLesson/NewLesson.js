@@ -17,22 +17,6 @@ export default class NewLesson extends Component {
             accommodations: '',
             musicStandards: [],
             standard_title: []
-            // data: {
-            //     type: 'Lesson',
-            //     id: null,
-            //     attributes: {
-            //         name: '',
-            //         grade: '',
-            //         topic: '',
-            //         materials: '',
-            //         vocab: '',
-            //         description: '',
-            //         activities: '',
-            //         accommodations: '',
-            //     }
-            // },
-            // musicStandards: [],
-            // id: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -74,7 +58,7 @@ export default class NewLesson extends Component {
         let newDescription = this.state.description;
         let newActivities = this.state.activities;
         let newAccommodations = this.state.accommodations;
-        let lessonStandards = this.state.id;
+        let lessonStandards = this.state.standard_title;
 
         let lesson = {
 
@@ -126,6 +110,7 @@ export default class NewLesson extends Component {
 
     render() {
         console.log(this.state);
+        console.log(this.state.standard_title);
         let title = this.state.musicStandards.map(title => {
             return (
                 <div>
