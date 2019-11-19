@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/craftingcorelessons/static/css/main.aa0dadcc.chunk.css",
-    "main.js": "/craftingcorelessons/static/js/main.635e810f.chunk.js",
-    "main.js.map": "/craftingcorelessons/static/js/main.635e810f.chunk.js.map",
-    "runtime-main.js": "/craftingcorelessons/static/js/runtime-main.083cfd00.js",
-    "runtime-main.js.map": "/craftingcorelessons/static/js/runtime-main.083cfd00.js.map",
-    "static/js/2.720e4066.chunk.js": "/craftingcorelessons/static/js/2.720e4066.chunk.js",
-    "static/js/2.720e4066.chunk.js.map": "/craftingcorelessons/static/js/2.720e4066.chunk.js.map",
-    "index.html": "/craftingcorelessons/index.html",
-    "precache-manifest.d37139077285edc8b3449cdfe0a1ee10.js": "/craftingcorelessons/precache-manifest.d37139077285edc8b3449cdfe0a1ee10.js",
-    "service-worker.js": "/craftingcorelessons/service-worker.js",
-    "static/css/main.aa0dadcc.chunk.css.map": "/craftingcorelessons/static/css/main.aa0dadcc.chunk.css.map"
+    "main.css": "/craftingCoreLessons/static/css/main.aa0dadcc.chunk.css",
+    "main.js": "/craftingCoreLessons/static/js/main.33df4ebe.chunk.js",
+    "main.js.map": "/craftingCoreLessons/static/js/main.33df4ebe.chunk.js.map",
+    "runtime-main.js": "/craftingCoreLessons/static/js/runtime-main.0c568c57.js",
+    "runtime-main.js.map": "/craftingCoreLessons/static/js/runtime-main.0c568c57.js.map",
+    "static/js/2.720e4066.chunk.js": "/craftingCoreLessons/static/js/2.720e4066.chunk.js",
+    "static/js/2.720e4066.chunk.js.map": "/craftingCoreLessons/static/js/2.720e4066.chunk.js.map",
+    "index.html": "/craftingCoreLessons/index.html",
+    "precache-manifest.54b811175dce7c93ab6da8265274de66.js": "/craftingCoreLessons/precache-manifest.54b811175dce7c93ab6da8265274de66.js",
+    "service-worker.js": "/craftingCoreLessons/service-worker.js",
+    "static/css/main.aa0dadcc.chunk.css.map": "/craftingCoreLessons/static/css/main.aa0dadcc.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.083cfd00.js",
+    "static/js/runtime-main.0c568c57.js",
     "static/js/2.720e4066.chunk.js",
     "static/css/main.aa0dadcc.chunk.css",
-    "static/js/main.635e810f.chunk.js"
+    "static/js/main.33df4ebe.chunk.js"
   ]
 }
