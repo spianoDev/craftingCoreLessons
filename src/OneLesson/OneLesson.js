@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
-import { Link, Redirect } from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 export default class OneLesson extends Component {
     constructor() {
@@ -33,22 +33,30 @@ export default class OneLesson extends Component {
                 axios.get(`http://localhost:8000/standards/`)
                     .then(res => {
                         // console.log(res.data.data);
-                        this.setState({ musicStandards: res.data.data })
+                        this.setState({musicStandards: res.data.data})
                     })
             })
             .catch(error => {
                 console.log(error);
             });
     }
+
     setLessonStandards(standards) {
-        this.setState( {
+        this.setState({
             musicStandards: standards
         })
         // console.log(evt.target.value)
 
     }
+
     deleteLesson() {
-        axios.delete(`http://localhost:8000/lesson/delete/${this.props.match.params.id}`)
+        axios.delete(`http://localhost:8000/lesson/delete/${this.props.match.params.id}`,
+            {
+                headers:
+                    {
+                        'Content-Type': 'application/vnd.api+json'
+                    }
+            })
             .then(res => {
                 // this.setRedirect();
             })
@@ -56,6 +64,7 @@ export default class OneLesson extends Component {
                 console.log(error);
             });
     }
+
     // setRedirect() {
     //     this.setState({ redirect: true });
     // }
@@ -98,23 +107,23 @@ export default class OneLesson extends Component {
         // console.log(this.state.lesson.attributes);
         console.log(lessonInfo);
         console.log(dataInfo);
-            return (
-                <div key={this.state.lesson}>
-                    {/*{this.renderRedirect()}*/}
-                    <h2>Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
-                    <h3>Standards</h3>
-                    {dataInfo}
-                    <h4>Important Vocabulary: {lessonInfo.vocab}</h4>
-                    <p>Description: {lessonInfo.description}</p>
-                    <p>Activities: {lessonInfo.activities}</p>
-                    <p>Accommodations: {lessonInfo.accommodations}</p>
-                    <Link to={`/lesson/update/${this.props.match.params.id}`}>
-                        <button >Update this Lesson </button>
-                    </Link>
-                    <Link to={`/lesson/delete/${this.props.match.params.id}`}>
-                        <button >Delete this Lesson </button>
-                    </Link>
-                </div>
-            )
+        return (
+            <div key={this.state.lesson}>
+                {/*{this.renderRedirect()}*/}
+                <h2>Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
+                <h3>Standards</h3>
+                {dataInfo}
+                <h4>Important Vocabulary: {lessonInfo.vocab}</h4>
+                <p>Description: {lessonInfo.description}</p>
+                <p>Activities: {lessonInfo.activities}</p>
+                <p>Accommodations: {lessonInfo.accommodations}</p>
+                <Link to={`/lesson/update/${this.props.match.params.id}`}>
+                    <button>Update this Lesson</button>
+                </Link>
+                <Link to={`/lesson/delete/${this.props.match.params.id}`}>
+                    <button onClick={this.deleteLesson}>Delete this Lesson</button>
+                </Link>
+            </div>
+        )
     }
 }
