@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/craftingcorelessons/static/css/main.aa0dadcc.chunk.css",
+    "main.js": "/craftingcorelessons/static/js/main.04fa30c9.chunk.js",
+    "main.js.map": "/craftingcorelessons/static/js/main.04fa30c9.chunk.js.map",
+    "runtime-main.js": "/craftingcorelessons/static/js/runtime-main.083cfd00.js",
+    "runtime-main.js.map": "/craftingcorelessons/static/js/runtime-main.083cfd00.js.map",
+    "static/js/2.21326489.chunk.js": "/craftingcorelessons/static/js/2.21326489.chunk.js",
+    "static/js/2.21326489.chunk.js.map": "/craftingcorelessons/static/js/2.21326489.chunk.js.map",
+    "index.html": "/craftingcorelessons/index.html",
+    "precache-manifest.ad4eaa904ef6fa415252e0dfc54e3468.js": "/craftingcorelessons/precache-manifest.ad4eaa904ef6fa415252e0dfc54e3468.js",
+    "service-worker.js": "/craftingcorelessons/service-worker.js",
+    "static/css/main.aa0dadcc.chunk.css.map": "/craftingcorelessons/static/css/main.aa0dadcc.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.083cfd00.js",
+    "static/js/2.21326489.chunk.js",
+    "static/css/main.aa0dadcc.chunk.css",
+    "static/js/main.04fa30c9.chunk.js"
+  ]
+}
