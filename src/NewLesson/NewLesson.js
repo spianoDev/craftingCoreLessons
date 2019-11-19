@@ -24,7 +24,7 @@ export default class NewLesson extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8000/standards/`)
+        axios.get(`https://corelessons.herokuapp.com/standards/`)
             .then(res => {
                 // console.log(res.data.data);
                 this.setState({musicStandards: res.data.data})
@@ -77,7 +77,7 @@ export default class NewLesson extends Component {
                 }
             }
         };
-        axios.post(`http://localhost:8000/lessons/`,
+        axios.post(`https://corelessons.herokuapp.com/lessons/`,
 
             lesson, {
 

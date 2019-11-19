@@ -18,7 +18,7 @@ export default class OneLesson extends Component {
 
     componentDidMount() {
         // backend call to access the individual lesson data model
-        axios.get(`http://localhost:8000/lesson/${this.props.match.params.id}`)
+        axios.get(`https://corelessons.herokuapp.com/lesson/${this.props.match.params.id}`)
             .then(res => {
                 // console.log(res.data.data);
                 console.log(res.data.data.relationships.standard_title.data);
@@ -30,7 +30,7 @@ export default class OneLesson extends Component {
             })
             .then(() => {
                 // second backend call to access the music standards data model
-                axios.get(`http://localhost:8000/standards/`)
+                axios.get(`https://corelessons.herokuapp.com/standards/`)
                     .then(res => {
                         // console.log(res.data.data);
                         this.setState({musicStandards: res.data.data})
@@ -50,7 +50,7 @@ export default class OneLesson extends Component {
     }
 
     deleteLesson() {
-        axios.delete(`http://localhost:8000/lesson/delete/${this.props.match.params.id}`,
+        axios.delete(`https://corelessons.herokuapp.com/lesson/delete/${this.props.match.params.id}`,
             {
                 headers:
                     {

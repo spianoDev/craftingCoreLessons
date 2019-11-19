@@ -26,13 +26,13 @@ export default class UpdateLesson extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8000/standards/`)
+        axios.get(`https://corelessons.herokuapp.com/standards/`)
             .then(res => {
                 // console.log(res.data.data);
                 this.setState({musicStandards: res.data.data})
             })
             .then(() => {
-                axios.get(`http://localhost:8000/lesson/${this.props.match.params.id}`)
+                axios.get(`https://corelessons.herokuapp.com/lesson/${this.props.match.params.id}`)
                     .then(res => {
                         console.log(res.data.data);
                         this.setState({
@@ -116,7 +116,7 @@ export default class UpdateLesson extends Component {
             }
         };
         console.log(updatedLesson);
-        axios.put(`http://localhost:8000/lesson/update/${this.props.match.params.id}`,
+        axios.put(`https://corelessons.herokuapp.com/lesson/update/${this.props.match.params.id}`,
 
             updatedLesson, {
                 headers: {

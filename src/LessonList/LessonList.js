@@ -12,7 +12,7 @@ export default class LessonList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/lessons/')
+        axios.get('https://corelessons.herokuapp.com/lessons/')
             .then(res => {
                 console.log(res.data);
                 this.setState({ listOfLessons: res.data.data });

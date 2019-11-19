@@ -27,7 +27,7 @@ export default class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch('http://localhost:8000/core/current_user/', {
+            fetch('https://core.herokuapp.com/core/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
@@ -42,7 +42,7 @@ export default class App extends Component {
 
     handle_login(evt, data) {
         evt.preventDefault();
-        fetch('http://localhost:8000/token-auth/', {
+        fetch('https://core.herokuapp.com/token-auth/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/vnd.api+json'
@@ -65,7 +65,7 @@ export default class App extends Component {
 
     handle_signup(evt, data) {
         evt.preventDefault();
-        fetch('http://localhost:8000/core/users/', {
+        fetch('https://corelessons.herokuapp.com/core/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/vnd.api+json'
@@ -107,7 +107,7 @@ export default class App extends Component {
             }
 
         return (
-            <div >
+            <div className='background'>
 
                 <header >
                     <nav>
