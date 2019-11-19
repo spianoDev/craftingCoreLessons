@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/craftingcorelessons/precache-manifest.a89dcfd6e1809c103f96f4fbf285a15c.js"
+  "/craftingcorelessons/precache-manifest.d37139077285edc8b3449cdfe0a1ee10.js"
 );
 
 self.addEventListener('message', (event) => {
