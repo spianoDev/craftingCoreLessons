@@ -4,6 +4,7 @@
 
 ![Styled Landing Page](public/images/Styled-lesson-list.png)
 
+This application is linked to a custom built API that includes all 183 Illinois CCSS for Music. Visit []()
 ![Response/Request Cycle](public/images/lesson-request:response-cycle.png)
 ![Component Layout](public/images/Opening-Page.png)
 ![Individual Lesson Layout](public/images/Component-Plan-Lessons.png)
