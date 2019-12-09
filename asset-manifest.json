@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/craftingCoreLessons/static/css/main.aa0dadcc.chunk.css",
-    "main.js": "/craftingCoreLessons/static/js/main.33df4ebe.chunk.js",
-    "main.js.map": "/craftingCoreLessons/static/js/main.33df4ebe.chunk.js.map",
+    "main.css": "/craftingCoreLessons/static/css/main.f4577a56.chunk.css",
+    "main.js": "/craftingCoreLessons/static/js/main.f221877f.chunk.js",
+    "main.js.map": "/craftingCoreLessons/static/js/main.f221877f.chunk.js.map",
     "runtime-main.js": "/craftingCoreLessons/static/js/runtime-main.0c568c57.js",
     "runtime-main.js.map": "/craftingCoreLessons/static/js/runtime-main.0c568c57.js.map",
     "static/js/2.720e4066.chunk.js": "/craftingCoreLessons/static/js/2.720e4066.chunk.js",
     "static/js/2.720e4066.chunk.js.map": "/craftingCoreLessons/static/js/2.720e4066.chunk.js.map",
     "index.html": "/craftingCoreLessons/index.html",
-    "precache-manifest.54b811175dce7c93ab6da8265274de66.js": "/craftingCoreLessons/precache-manifest.54b811175dce7c93ab6da8265274de66.js",
+    "precache-manifest.6a52f82d12cdd7bdc915709f2496897c.js": "/craftingCoreLessons/precache-manifest.6a52f82d12cdd7bdc915709f2496897c.js",
     "service-worker.js": "/craftingCoreLessons/service-worker.js",
-    "static/css/main.aa0dadcc.chunk.css.map": "/craftingCoreLessons/static/css/main.aa0dadcc.chunk.css.map"
+    "static/css/main.f4577a56.chunk.css.map": "/craftingCoreLessons/static/css/main.f4577a56.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.0c568c57.js",
     "static/js/2.720e4066.chunk.js",
-    "static/css/main.aa0dadcc.chunk.css",
-    "static/js/main.33df4ebe.chunk.js"
+    "static/css/main.f4577a56.chunk.css",
+    "static/js/main.f221877f.chunk.js"
   ]
 }
