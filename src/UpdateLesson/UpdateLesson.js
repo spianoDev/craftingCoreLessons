@@ -151,9 +151,11 @@ export default class UpdateLesson extends Component {
         let title = this.state.musicStandards.map(title => {
             return (
                 <div>
+                    <p className="text">{title.attributes.standard_text}</p>
                     <label htmlFor='label'>{title.attributes.standard_title}
                         <input value={title.attributes.pk} name='label' type='checkbox'
                                onClick={this.addCheckbox}/></label>
+                    <hr/>
                 </div>
             )
 
@@ -162,33 +164,33 @@ export default class UpdateLesson extends Component {
             <div>
                 {/*{this.renderRedirectToLessons()}*/}
                 <form>
-                    <label htmlFor='name'>Lesson Name </label>
-                    <input onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"
+                    <label className="title" htmlFor='name'>Lesson Name </label>
+                    <input className="box"  onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"
                            value={this.state.name}/>
-                    <label htmlFor='grade'>Grade Level </label>
-                    <input onChange={this.handleChange} name='grade' type="text" placeholder="grade"
+                    <label className="title" htmlFor='grade'>Grade Level </label>
+                    <input className="box"  onChange={this.handleChange} name='grade' type="text" placeholder="grade"
                            value={this.state.grade}/>
-                    <label htmlFor='topic'>Lesson Topic </label>
-                    <input onChange={this.handleChange} name='topic' type="text" placeholder="type topic"
+                    <label className="title" htmlFor='topic'>Lesson Topic </label>
+                    <input className="box"  onChange={this.handleChange} name='topic' type="text" placeholder="type topic"
                            value={this.state.topic}/>
-                    <label htmlFor='materials'>Materials </label>
-                    <input onChange={this.handleChange} name='materials' type="text" placeholder="list materials"
+                    <label className="title" htmlFor='materials'>Materials </label>
+                    <input className="box-medium" onChange={this.handleChange} name='materials' type="text" placeholder="list materials"
                            value={this.state.materials}/>
-                    <label htmlFor='vocab'>Vocabulary </label>
-                    <input onChange={this.handleChange} name='vocab' type="text" placeholder="list vocabulary"
+                    <label className="title" htmlFor='vocab'>Vocabulary </label>
+                    <input className="box-medium" onChange={this.handleChange} name='vocab' type="text" placeholder="list vocabulary"
                            value={this.state.vocab}/>
-                    <label htmlFor='description'>Description </label>
-                    <input onChange={this.handleChange} name='description' type="text" placeholder="type description"
+                    <label className="title" htmlFor='description'>Description </label>
+                    <input className="box-large" onChange={this.handleChange} name='description' type="text" placeholder="type description"
                            value={this.state.description}/>
-                    <label htmlFor='activities'>Activities </label>
-                    <input onChange={this.handleChange} name='activities' type="text" placeholder="type activities"
+                    <label className="title" htmlFor='activities'>Activities </label>
+                    <input className="box-large" onChange={this.handleChange} name='activities' type="text" placeholder="type activities"
                            value={this.state.activities}/>
-                    <label htmlFor='accommodations'>Accommodations </label>
-                    <input onChange={this.handleChange} name='accommodations' type="text"
+                    <label className="title" htmlFor='accommodations'>Accommodations </label>
+                    <input className="box-large" onChange={this.handleChange} name='accommodations' type="text"
                            placeholder="list accommodations" value={this.state.accommodations}/>
-                    <label> Choose Standards </label>
+                    <label className="title"> Choose Standards </label>
                     {title}
-                    <button onClick={this.handleSubmit} type="submit">Submit</button>
+                    <button className="individual-lesson" onClick={this.handleSubmit} type="submit">Submit</button>
 
                 </form>
 

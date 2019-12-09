@@ -107,8 +107,8 @@ export default class App extends Component {
             }
 
         return (
-            <div className='background'>
-
+            <div className="background">
+               
                 <header >
                     <nav>
                         <Link to="/lessons"> Lesson List </Link>
@@ -118,7 +118,7 @@ export default class App extends Component {
 
                 </header>
                 <main>
-                    <div className="content">
+                    <div className="content" >
                     <Nav logged_in={this.state.logged_in}
                          display_form={this.display_form}
                          handle_logout={this.handle_logout}/>

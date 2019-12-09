@@ -94,7 +94,7 @@ export default class OneLesson extends Component {
                 dataInfo.push(<div key={dataInfo}>
                     <h4>{standards[i].attributes.heading} {standards[i].attributes.anchor_standard_number}: {standards[i].attributes.anchor_standard_text}
                     </h4>
-                    <p>{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>
+                    <p className="title">{standards[i].attributes.standard_title}: {standards[i].attributes.standard_text}</p>
 
                 </div>)
             }
@@ -110,18 +110,18 @@ export default class OneLesson extends Component {
         return (
             <div key={this.state.lesson}>
                 {/*{this.renderRedirect()}*/}
-                <h2>Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
-                <h3>Standards</h3>
+                <h2 className="title">Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
+                <h3 className="title-black">Standards</h3>
                 {dataInfo}
-                <h4>Important Vocabulary: {lessonInfo.vocab}</h4>
-                <p>Description: {lessonInfo.description}</p>
-                <p>Activities: {lessonInfo.activities}</p>
-                <p>Accommodations: {lessonInfo.accommodations}</p>
+                <h4 className="title-black">Important Vocabulary:</h4> <p>{lessonInfo.vocab}</p>
+                <h4 className="title-black">Description: </h4><p>{lessonInfo.description}</p>
+                <h4 className="title-black"> Activities:</h4> <p>{lessonInfo.activities}</p>
+                <h4 className="title-black"> Accommodations:</h4> <p> {lessonInfo.accommodations}</p>
                 <Link to={`/lesson/update/${this.props.match.params.id}`}>
-                    <button>Update this Lesson</button>
+                    <button className="individual-lesson">Update this Lesson</button>
                 </Link>
                 <Link to={`/lesson/delete/${this.props.match.params.id}`}>
-                    <button onClick={this.deleteLesson}>Delete this Lesson</button>
+                    <button className="individual-lesson" onClick={this.deleteLesson}>Delete this Lesson</button>
                 </Link>
             </div>
         )
