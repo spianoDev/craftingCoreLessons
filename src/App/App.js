@@ -9,6 +9,7 @@ import SignupForm from "../Forms/SignupForm";
 import Nav from '../Nav/Nav';
 import NewLesson from "../NewLesson/NewLesson";
 import UpdateLesson from "../UpdateLesson/UpdateLesson";
+import axios from 'axios';
 
 export default class App extends Component {
     constructor(props) {
@@ -27,10 +28,10 @@ export default class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch('https://core.herokuapp.com/core/current_user/', {
+            axios.get('https://core.herokuapp.com/core/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
-                }
+                },
             })
                 .then(res => res.json())
                 .then(json => {
@@ -42,8 +43,8 @@ export default class App extends Component {
 
     handle_login(evt, data) {
         evt.preventDefault();
-        fetch('https://core.herokuapp.com/token-auth/', {
-            method: 'POST',
+        axios.post('https://core.herokuapp.com/token-auth/', {
+
             headers: {
                 'Content-Type': 'application/vnd.api+json'
             },
@@ -65,8 +66,7 @@ export default class App extends Component {
 
     handle_signup(evt, data) {
         evt.preventDefault();
-        fetch('https://corelessons.herokuapp.com/core/users/', {
-            method: 'POST',
+        axios.post('https://corelessons.herokuapp.com/core/users/', {
             headers: {
                 'Content-Type': 'application/vnd.api+json'
             },
@@ -97,10 +97,10 @@ export default class App extends Component {
         let form;
             switch (this.state.displayed_form) {
                 case 'login':
-                    form = <LoginForm handle_login={this.handle_login} />;
+                    form = < LoginForm handle_login={this.handle_login} />;
                     break;
                 case 'signup':
-                    form = <SignupForm handle_signup={this.handle_signup} />
+                    form = <SignupForm handle_signup={this.handle_signup} />;
                     break;
                 default:
                     form = null;
@@ -108,7 +108,7 @@ export default class App extends Component {
 
         return (
             <div className="background">
-               
+
                 <header >
                     <nav>
                         <Link to="/lessons"> Lesson List </Link>
@@ -119,14 +119,16 @@ export default class App extends Component {
                 </header>
                 <main>
                     <div className="content" >
+                        <div className="login">
                     <Nav logged_in={this.state.logged_in}
                          display_form={this.display_form}
                          handle_logout={this.handle_logout}/>
                     {form}
-                    <h3>
+                    <h3 className="text">
                         {this.state.logged_in ? `Hey there, ${this.state.username}`
                             : 'Please Log In' }
                     </h3>
+                        </div>
                     <Switch>
                         <Route path="/lesson/new" exact={true} component={NewLesson} />
                         <Route path="/lesson/update/:id" exact={true} render={routerProps => <UpdateLesson match={routerProps.match} /> } />

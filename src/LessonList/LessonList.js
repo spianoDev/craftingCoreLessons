@@ -27,8 +27,8 @@ export default class LessonList extends Component {
         let lesson = this.state.listOfLessons.map(lessonName => {
             return (
                 <div key={lessonName.attributes.name}>
-                    <ul>
-                    <Link to={`/lesson/${lessonName.id}`} className="individual-lesson">{lessonName.attributes.name}:</Link>
+                    <ul >
+                    <Link className="individual-lesson" to={`/lesson/${lessonName.id}`} >{lessonName.attributes.name}:</Link>
                         <li>A lesson on {lessonName.attributes.topic} for grade {lessonName.attributes.grade}.</li>
                     </ul>
                 </div>
