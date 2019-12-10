@@ -8,7 +8,7 @@ body {
 
 }
 body .background {
-  background-image: url("/public/images/standards-background.jpg");
+  background-image: url("/src/App/standards-background.jpg");
 }
 
 code {

@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Slabo+27px&display=swap');
 
-.background {
-  background-image: url("/public/images/standards-background.jpg");
+.behind {
+  background-image: url("standards-background.jpg");
   background-size: 100%;
+  padding-bottom: 75px;
 }
 
 .heading {

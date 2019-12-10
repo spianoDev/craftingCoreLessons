@@ -107,7 +107,7 @@ export default class App extends Component {
             }
 
         return (
-            <div className="background">
+            <div className="behind">
 
                 <header >
                     <nav>
