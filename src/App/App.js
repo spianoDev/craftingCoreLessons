@@ -17,7 +17,8 @@ export default class App extends Component {
         this.state = {
             displayed_form: '',
             logged_in: !!localStorage.getItem('token'),
-            username: ''
+            username: '',
+            password: ''
         };
         this.handle_login = this.handle_login.bind(this);
         this.handle_signup = this.handle_signup.bind(this);
@@ -43,24 +44,36 @@ export default class App extends Component {
 
     handle_login(evt, data) {
         evt.preventDefault();
-        axios.post('https://core.herokuapp.com/token-auth/', {
+        let user = this.state.username;
+        let passcode = this.state.password;
 
-            headers: {
-                'Content-Type': 'application/vnd.api+json'
-            },
-            body: JSON.stringify(data)
-        })
+        let userLogin = {
+            data: {
+                type: "ObtainJSONWebToken",
+                attributes: {
+                    username: user,
+                    password: passcode
+                }
+            }
+        };
+        axios.post('https://corelessons.herokuapp.com/token-auth/',
+            userLogin, {
+                headers: {
+                    'Content-Type': 'application/vnd.api+json'
+                },
+                body: JSON.stringify({data: userLogin})
+            })
+            .then(res => console.log(data))
             .then(res => res.json())
-             .then(res => console.log(res))
             .then(json => {
-                console.log(json.token);
+                console.log(json);
                 localStorage.setItem('token', json.token);
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
-                    username: json.user.username
+                    username: user,
+                    password: passcode
                 });
-
             })
     }
 
@@ -72,6 +85,7 @@ export default class App extends Component {
             },
             body: JSON.stringify(data)
         })
+            .then(res => console.log(res))
             .then(res => res.json())
             .then(json => {
                 localStorage.setItem('token', json.data.token);
@@ -124,10 +138,10 @@ export default class App extends Component {
                          display_form={this.display_form}
                          handle_logout={this.handle_logout}/>
                     {form}
-                    <h3 className="text">
+                    <h4 >
                         {this.state.logged_in ? `Hey there, ${this.state.username}`
                             : 'Please Log In' }
-                    </h3>
+                    </h4>
                         </div>
                     <Switch>
                         <Route path="/lesson/new" exact={true} component={NewLesson} />

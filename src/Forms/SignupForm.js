@@ -23,11 +23,11 @@ export default class SignupForm extends Component {
         return (
             <form onSubmit={evt => this.props.handle_signup(evt, this.state)}>
                 <h4>Sign Up</h4>
-                <label htmlFor='username'>Username</label>
-                <input type='text' name='username' value={this.state.username} onChange={this.handleChange}/>
-                <label htmlFor='password'>Password</label>
-                <input type='password' name='password' value={this.state.password} onChange={this.handleChange}/>
-                <input type='submit'/>
+                <label className="title" htmlFor='username'>Username</label>
+                <input className="box" type='text' name='username' value={this.state.username} onChange={this.handleChange}/>
+                <label className="title" htmlFor='password'>Password</label>
+                <input className="box" type='password' name='password' value={this.state.password} onChange={this.handleChange}/>
+                <input className="individual-lesson"  type='submit'/>
             </form>
         )
     }

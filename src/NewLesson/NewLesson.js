@@ -80,9 +80,7 @@ export default class NewLesson extends Component {
         axios.post(`https://corelessons.herokuapp.com/lessons/`,
 
             lesson, {
-
                 headers: {
-                    // 'Accept': 'application/vnd.api+json',
                     'Content-Type': 'application/vnd.api+json'
                 },
                 body: JSON.stringify({data: lesson})
@@ -113,7 +111,7 @@ export default class NewLesson extends Component {
         console.log(this.state.standard_title);
         let title = this.state.musicStandards.map(title => {
             return (
-                <div>
+                <div key={'standards'}>
                     <p className="text">{title.attributes.standard_text}</p>
                     <label className="title" htmlFor='label'>{title.attributes.standard_title}
                         <input  value={title.attributes.pk} name='label' type='checkbox'
@@ -124,9 +122,9 @@ export default class NewLesson extends Component {
 
         });
         return (
-            <div>
+            <div key={this.state}>
                 {/*{this.renderRedirect()}*/}
-                <form>
+                <form key={this.state.name}>
                     <label className="title" htmlFor='name'>Lesson Name </label>
                     <input className="box" onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"
                            value={this.state.name}/>
