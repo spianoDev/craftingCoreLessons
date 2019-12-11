@@ -29,7 +29,7 @@ export default class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            axios.get('https://core.herokuapp.com/core/current_user/', {
+            axios.get('https://corelessons.herokuapp.com/core/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 },
@@ -44,15 +44,17 @@ export default class App extends Component {
 
     handle_login(evt, data) {
         evt.preventDefault();
-        let user = this.state.username;
-        let passcode = this.state.password;
+
+        console.log(data.username);
+        let user = data.username;
+        let passCode = data.password;
 
         let userLogin = {
             data: {
                 type: "ObtainJSONWebToken",
                 attributes: {
                     username: user,
-                    password: passcode
+                    password: passCode
                 }
             }
         };
@@ -61,20 +63,21 @@ export default class App extends Component {
                 headers: {
                     'Content-Type': 'application/vnd.api+json'
                 },
-                body: JSON.stringify({data: userLogin})
+                body: JSON.stringify({userLogin})
             })
-            .then(res => console.log(data))
-            .then(res => res.json())
-            .then(json => {
-                console.log(json);
-                localStorage.setItem('token', json.token);
+            .then(res => console.log(res.data.data.token))
+            .then(res => {
+                localStorage.setItem('token', res);
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
                     username: user,
-                    password: passcode
+                    password: passCode
                 });
             })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     handle_signup(evt, data) {

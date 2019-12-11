@@ -9,6 +9,7 @@ export default class StandardList extends Component {
                     <h2 className="title">Grade: {standardName.attributes.grade} - {standardName.attributes.heading}, {standardName.attributes.anchor_standard_number}</h2>
                     <h3 >{standardName.attributes.anchor_standard_text}</h3>
                     <h4 className='standard-name'>{standardName.attributes.standard_title}: {standardName.attributes.standard_text}</h4>
+                    <hr/>
                 </div>
             );
         });

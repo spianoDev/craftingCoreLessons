@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
     };
     render() {
         return (
-            <form onSubmit={evt => this.props.handle_login(evt, this.state)}>
+            <form className="content" onSubmit={evt => this.props.handle_login(evt, this.state)}>
                 <h4>Log In</h4>
                 <label className="title" htmlFor='username'>Username</label>
                 <input className="box" type='text' name='username' value={this.state.username} onChange={this.handleChange}/>
