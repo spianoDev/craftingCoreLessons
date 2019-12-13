@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7eadc359d46e1c9fc2212a1400d3171b",
+    "revision": "2e1e8077da6aa8dbc27d4e2b2f4c4803",
     "url": "/craftingCoreLessons/index.html"
   },
   {
-    "revision": "d3039ef7a48a0c2feb17",
+    "revision": "6e49f8783c24d13fa406",
     "url": "/craftingCoreLessons/static/css/main.951c5bd2.chunk.css"
   },
   {
-    "revision": "d754f05c520feb3081ec",
-    "url": "/craftingCoreLessons/static/js/2.4ddcd368.chunk.js"
+    "revision": "2b336bd034c4ca1db0a5",
+    "url": "/craftingCoreLessons/static/js/2.f7544b01.chunk.js"
   },
   {
-    "revision": "d3039ef7a48a0c2feb17",
-    "url": "/craftingCoreLessons/static/js/main.3c5a326b.chunk.js"
+    "revision": "6e49f8783c24d13fa406",
+    "url": "/craftingCoreLessons/static/js/main.a9a320cd.chunk.js"
   },
   {
     "revision": "3898cfd79544961630db",
