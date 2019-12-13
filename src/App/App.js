@@ -82,22 +82,39 @@ export default class App extends Component {
 
     handle_signup(evt, data) {
         evt.preventDefault();
-        axios.post('https://corelessons.herokuapp.com/core/users/', {
+        console.log(data.username);
+        let newUser = data.username;
+        let newPassCode = data.password;
+
+        let newUserLogin = {
+            data: {
+                type: "ObtainJSONWebToken",
+                attributes: {
+                    username: newUser,
+                    password: newPassCode
+                }
+            }
+        };
+        axios.post('https://corelessons.herokuapp.com/core/users/',
+            newUserLogin, {
             headers: {
                 'Content-Type': 'application/vnd.api+json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({newUserLogin})
         })
-            .then(res => console.log(res))
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('token', json.data.token);
+            .then(res => console.log(res.data))
+            .then(res => {
+                localStorage.setItem('token', res);
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
-                    username: json.username
+                    username: newUser,
+                    password: newPassCode
                 });
             })
+            .catch(err => {
+                console.log(err);
+            });
     }
     handle_logout() {
         localStorage.removeItem('token');

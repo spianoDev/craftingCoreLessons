@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-// import Checkbox from "../Checkbox/Checkbox";
+import { Redirect } from "react-router-dom";
 
 
 export default class NewLesson extends Component {
@@ -21,6 +21,8 @@ export default class NewLesson extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addCheckbox = this.addCheckbox.bind(this);
+        this.setRedirectToLessons = this.setRedirectToLessons.bind(this);
+        this.renderRedirectToLessons = this.renderRedirectToLessons.bind(this);
     }
 
     componentDidMount() {
@@ -87,6 +89,7 @@ export default class NewLesson extends Component {
             })
             .then(res => {
                 console.log(res);
+                this.setRedirectToLessons();
             })
             .catch(err => {
                 console.log(err);
@@ -105,7 +108,15 @@ export default class NewLesson extends Component {
         });
         // console.log(this.state.name);
     }
+    setRedirectToLessons() {
+        this.setState({ redirect: true });
+    }
 
+    renderRedirectToLessons() {
+        if (this.state.redirect) {
+            return <Redirect to="/craftingCoreLessons/#/lessons" />;
+        }
+    }
     render() {
         console.log(this.state);
         console.log(this.state.standard_title);
@@ -123,7 +134,7 @@ export default class NewLesson extends Component {
         });
         return (
             <div key={this.state}>
-                {/*{this.renderRedirect()}*/}
+                {this.renderRedirectToLessons()}
                 <form key={this.state.name}>
                     <label className="title" htmlFor='name'>Lesson Name </label>
                     <input className="box" onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"

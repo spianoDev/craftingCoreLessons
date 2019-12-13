@@ -12,8 +12,8 @@ export default class OneLesson extends Component {
         };
         this.setLessonStandards = this.setLessonStandards.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
-        // this.setRedirect = this.setRedirect.bind(this);
-        // this.renderRedirect = this.renderRedirect.bind(this);
+        this.setRedirect = this.setRedirect.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
     }
 
     componentDidMount() {
@@ -58,26 +58,23 @@ export default class OneLesson extends Component {
                     }
             })
             .then(res => {
-                // this.setRedirect();
+                this.setRedirect();
             })
             .catch(error => {
                 console.log(error);
             });
     }
 
-    // setRedirect() {
-    //     this.setState({ redirect: true });
-    // }
-    //
-    // renderRedirect() {
-    //     if (this.state.redirect) {
-    //         return <Redirect to="http://localhost:3000/lessons" />;
-    //     }
-    // }
+    setRedirect() {
+        this.setState({ redirect: true });
+    }
+
+    renderRedirect() {
+        if (this.state.redirect) {
+            return <Redirect to="/lessons" />;
+        }
+    }
     render() {
-        // console.log(this.state);
-        //  let chosenLesson = allLessons.find(lesson => lesson.id === this.props.match.params.id);
-        // // console.log(chosenLesson.relationships.standard_title.data[0]);
         let standards = [];
         if (this.state.lessonStandards.length && this.state.musicStandards.length) {
             for (let i = 0; i < this.state.lessonStandards.length; i++) {
@@ -104,12 +101,12 @@ export default class OneLesson extends Component {
             lessonInfo = this.state.lesson.attributes;
 
         }
-        // console.log(this.state.lesson.attributes);
+
         console.log(lessonInfo);
         console.log(dataInfo);
         return (
             <div key={this.state.lesson}>
-                {/*{this.renderRedirect()}*/}
+                {this.renderRedirect()}
                 <h2 className="title">Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
                 <h3 className="title-black">Standards</h3>
                 {dataInfo}

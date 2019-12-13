@@ -21,8 +21,8 @@ export default class UpdateLesson extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addCheckbox = this.addCheckbox.bind(this);
-        // this.setRedirectToLessons = this.setRedirectToLessons.bind(this);
-        // this.renderRedirectToLessons = this.renderRedirectToLessons.bind(this);
+        this.setRedirectToLessons = this.setRedirectToLessons.bind(this);
+        this.renderRedirectToLessons = this.renderRedirectToLessons.bind(this);
     }
 
     componentDidMount() {
@@ -53,15 +53,15 @@ export default class UpdateLesson extends Component {
                 console.log(error);
             });
     }
-    // setRedirectToLessons() {
-    //     this.setState({ redirect: true });
-    // }
-    //
-    // renderRedirectToLessons() {
-    //     if (this.state.redirect) {
-    //         return <Redirect to="lessons" />;
-    //     }
-    // }
+    setRedirectToLessons() {
+        this.setState({ redirect: true });
+    }
+
+    renderRedirectToLessons() {
+        if (this.state.redirect) {
+            return <Redirect to="/lessons" />;
+        }
+    }
     addCheckbox(evt) {
         evt.preventDefault();
         let boxValue = evt.target.value;
@@ -125,7 +125,8 @@ export default class UpdateLesson extends Component {
                 body: JSON.stringify({data: updatedLesson})
             })
             .then(res => {
-                // this.setRedirectToLessons();
+                    console.log(res);
+                    this.setRedirectToLessons();
             })
             .catch(err => {
                 console.log(err);
@@ -162,7 +163,7 @@ export default class UpdateLesson extends Component {
         });
         return (
             <div>
-                {/*{this.renderRedirectToLessons()}*/}
+                {this.renderRedirectToLessons()}
                 <form>
                     <label className="title" htmlFor='name'>Lesson Name </label>
                     <input className="box"  onChange={this.handleChange} name='name' type="text" placeholder="type lesson name"
