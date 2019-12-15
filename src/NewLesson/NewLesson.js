@@ -114,7 +114,7 @@ export default class NewLesson extends Component {
 
     renderRedirectToLessons() {
         if (this.state.redirect) {
-            return <Redirect to="/craftingCoreLessons/#/lessons" />;
+            return <Redirect to="/lessons" />;
         }
     }
     render() {

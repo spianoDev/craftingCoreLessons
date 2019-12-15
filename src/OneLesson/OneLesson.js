@@ -12,8 +12,8 @@ export default class OneLesson extends Component {
         };
         this.setLessonStandards = this.setLessonStandards.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
-        this.setRedirect = this.setRedirect.bind(this);
-        this.renderRedirect = this.renderRedirect.bind(this);
+        this.setRedirectToLessons = this.setRedirectToLessons.bind(this);
+        this.renderRedirectToLessons = this.renderRedirectToLessons.bind(this);
     }
 
     componentDidMount() {
@@ -49,7 +49,9 @@ export default class OneLesson extends Component {
 
     }
 
-    deleteLesson() {
+    deleteLesson(evt) {
+        evt.preventDefault();
+
         axios.delete(`https://corelessons.herokuapp.com/lesson/delete/${this.props.match.params.id}`,
             {
                 headers:
@@ -58,18 +60,18 @@ export default class OneLesson extends Component {
                     }
             })
             .then(res => {
-                this.setRedirect();
+                this.setRedirectToLessons();
             })
-            .catch(error => {
-                console.log(error);
+            .catch(err => {
+                console.log(err);
             });
     }
 
-    setRedirect() {
+    setRedirectToLessons() {
         this.setState({ redirect: true });
     }
 
-    renderRedirect() {
+    renderRedirectToLessons() {
         if (this.state.redirect) {
             return <Redirect to="/lessons" />;
         }
@@ -106,7 +108,7 @@ export default class OneLesson extends Component {
         console.log(dataInfo);
         return (
             <div key={this.state.lesson}>
-                {this.renderRedirect()}
+                {this.renderRedirectToLessons()}
                 <h2 className="title">Lesson: {lessonInfo.name}, Grade {lessonInfo.grade} - {lessonInfo.topic}</h2>
                 <h3 className="title-black">Standards</h3>
                 {dataInfo}
