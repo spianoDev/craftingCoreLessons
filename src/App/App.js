@@ -95,7 +95,7 @@ export default class App extends Component {
                 }
             }
         };
-        axios.post('https://corelessons.herokuapp.com/core/users/',
+        axios.post('https://corelessons.herokuapp.com/core/users/create',
             newUserLogin, {
             headers: {
                 'Content-Type': 'application/vnd.api+json'
