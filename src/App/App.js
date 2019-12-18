@@ -65,7 +65,7 @@ export default class App extends Component {
                 },
                 body: JSON.stringify({userLogin})
             })
-            .then(res => console.log(res.data.data.token))
+            .then(res => console.log(res))
             .then(res => {
                 localStorage.setItem('token', res);
                 this.setState({
@@ -88,7 +88,7 @@ export default class App extends Component {
 
         let newUserLogin = {
             data: {
-                type: "ObtainJSONWebToken",
+                type: "UserList",
                 attributes: {
                     username: newUser,
                     password: newPassCode
@@ -145,6 +145,7 @@ export default class App extends Component {
 
                 <header >
                     <nav>
+                        <a href="https://spiano.dev"> Portfolio </a>
                         <Link to="/lessons"> Lesson List </Link>
                       <Link to="/standards"> All Standards </Link>
                         <Link to="/lesson/new"> New Lesson Plan </Link>

@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
                 <label className="title" htmlFor='username'>Username</label>
                 <input className="box" type='text' name='username' value={this.state.username} onChange={this.handleChange}/>
                 <label className="title" htmlFor='password'>Password</label>
-                <input className="box" type='password' name='password' value={this.state.password} onChange={this.handleChange}/>
+                <input className="box" type='password' name='password' autoComplete={this.state.password} value={this.state.password} onChange={this.handleChange}/>
                 <input onClick={this.handleChange} className="individual-lesson" type='submit'/>
             </form>
         )
